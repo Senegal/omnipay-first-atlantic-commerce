@@ -41,34 +41,30 @@ class CreditCard extends BaseCreditCard
             }
         }
 
-        if ( isset($parameters['expiryMonth']) && isset($parameters['expiryYear']) )
+
+        if ( $this->getExpiryDate('Ym') < gmdate('Ym') )
         {
-            if ( $this->getExpiryDate('Ym') < gmdate('Ym') )
-            {
-                throw new InvalidCreditCardException('Card has expired');
-            }
+            throw new InvalidCreditCardException('Card has expired');
         }
 
-        if ( isset($parameters['number']) )
-        {
-            if ( !Helper::validateLuhn( $this->getNumber() ) )
-            {
-                throw new InvalidCreditCardException('Card number is invalid');
-            }
 
-            if ( !is_null( $this->getNumber() ) && !preg_match( '/^\d{12,19}$/i', $this->getNumber() ) )
-            {
-                throw new InvalidCreditCardException('Card number should have 12 to 19 digits');
-            }
+        if ( !Helper::validateLuhn( $this->getNumber() ) )
+        {
+            throw new InvalidCreditCardException('Card number is invalid');
         }
 
-        if ( isset($parameters['cvv']) )
+        if ( !is_null( $this->getNumber() ) && !preg_match( '/^\d{12,19}$/i', $this->getNumber() ) )
         {
-            if ( !is_null( $this->getCvv() ) && !preg_match( '/^\d{3,4}$/i', $this->getCvv() ) )
-            {
-                throw new InvalidCreditCardException('Card CVV should have 3 to 4 digits');
-            }
+            throw new InvalidCreditCardException('Card number should have 12 to 19 digits');
         }
+
+
+
+        if ( !is_null( $this->getCvv() ) && !preg_match( '/^\d{3,4}$/i', $this->getCvv() ) )
+        {
+            throw new InvalidCreditCardException('Card CVV should have 3 to 4 digits');
+        }
+
     }
 
     /**
