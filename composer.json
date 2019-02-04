@@ -18,11 +18,11 @@
     ],
     "require": {
         "php": ">=5.4",
-        "thephpleague/omnipay-common": "~2.3",
+        "omnipay/common": "~2.3",
         "league/iso3166": "~1.0.1"
     },
     "require-dev": {
-        "thephpleague/omnipay-tests": "~2.0"
+        "omnipay/tests": "~2.0"
     },
     "autoload": {
         "psr-4": { "Omnipay\\FirstAtlanticCommerce\\" : "src" }

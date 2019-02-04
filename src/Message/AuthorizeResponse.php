@@ -97,6 +97,16 @@ class AuthorizeResponse extends AbstractResponse
     }
 
     /**
+     * Return transaction reference
+     *
+     * @return string
+     */
+    public function getHtmlFormData()
+    {
+        return isset($this->data['HTMLFormData']) ? $this->data['HTMLFormData'] : null;
+    }
+
+    /**
      * If the createCard parameter is set to true on the authorize request this will return the token
      *
      * @return string|null

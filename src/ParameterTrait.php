@@ -75,4 +75,22 @@ trait ParameterTrait
     {
         return $this->getParameter('requireAvsCheck');
     }
+
+    /**
+     * @param boolean $value Require AVS Check.
+     *
+     * @return boolean $value Require AVS Check.
+     */
+    public function setMerchantResponseURL($value)
+    {
+        return $this->setParameter('merchantResponseURL', $value);
+    }
+
+    /**
+     * @return boolean $value Require AVS Check.
+     */
+    public function getMerchantResponseURL()
+    {
+        return $this->getParameter('merchantResponseURL');
+    }
 }

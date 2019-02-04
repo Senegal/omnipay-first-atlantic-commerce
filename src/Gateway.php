@@ -29,7 +29,8 @@ class Gateway extends AbstractGateway
             'merchantPassword' => null,
             'acquirerId'       => '464748',
             'testMode'         => false,
-            'requireAvsCheck'  => true
+            'requireAvsCheck'  => true,
+            'merchantResponseURL' => 'https://'
         ];
     }
 
@@ -43,6 +44,18 @@ class Gateway extends AbstractGateway
     public function authorize(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\FirstAtlanticCommerce\Message\AuthorizeRequest', $parameters);
+    }
+
+    /**
+     * Authorize an amount on the customer’s card w 3DS.
+     *
+     * @param array $parameters
+     *
+     * @return \Omnipay\FirstAtlanticCommerce\Message\AuthorizeRequest
+     */
+    public function authorize3DS(array $parameters = [])
+    {
+        return $this->createRequest('\Omnipay\FirstAtlanticCommerce\Message\Authorize3DSRequest', $parameters);
     }
 
     /**

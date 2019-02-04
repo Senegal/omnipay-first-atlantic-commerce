@@ -154,4 +154,16 @@ abstract class AbstractRequest extends BaseAbstractRequest
     {
         return $this->getParameter('card');
     }
+
+    /**
+     * Get the payment currency number.
+     *
+     * @return integer
+     */
+    public function getCurrencyNumeric()
+    {
+        return \Yii::$app->params['fac']['currency'];  //BSD
+    }
+
+
 }
